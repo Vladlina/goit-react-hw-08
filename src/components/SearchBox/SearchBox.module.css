@@ -1,0 +1,33 @@
+.searchBlock {
+  margin-bottom: 30px;
+}
+
+.searchTitle {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: black;
+}
+
+.searchField {
+  width: 350px;
+  height: 40px;
+  border: 2px solid black;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* color: black; */
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 18px;
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.searchField:hover,
+.searchField:focus {
+  border-color: grey;
+}
