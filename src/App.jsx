@@ -1,24 +1,53 @@
-import { useDispatch } from "react-redux";
+// App.js
+import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactForm from "./components/ContactForm/ContactForm";
-import { fetchContacts } from "./redux/contacts/operations";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUser } from "./redux/auth/operations";
+import PrivateRoute from "./components/PrivateRoute";
+import RestrictedRoute from "./components/RestrictedRoute";
+import HomePage from "./pages/HomePage";
+import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from "./pages/LoginPage";
+import ContactsPage from "./pages/ContactsPage";
+import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector((state) => state.auth.isRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div>
-      <h1 style={{ marginBottom: "12px", color: "darkred" }}>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-    </div>
+  return !isRefreshing ? (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegistrationPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
+  ) : (
+    <p>Refreshing...</p>
   );
 }
 
