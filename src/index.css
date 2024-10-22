@@ -9,11 +9,12 @@ body {
   margin: 0;
   padding: 20px;
   background-image: linear-gradient(
-      to right,
-      rgba(255, 251, 251, 0.563),
-      rgba(96, 4, 4, 0.481)
+      90deg,
+      rgba(248, 248, 249, 0.278) 0%,
+      rgba(255, 252, 252, 0.9052871148459384) 50%,
+      rgba(247, 246, 247, 0.547) 100%
     ),
-    url("./assets/devushka-beret-sharf-telefon-chasy-svecha-knigi-osen-razmyto.jpg");
+    url("./assets/retro-devushka-vintazh-pinup.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;

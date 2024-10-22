@@ -1,0 +1,59 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 24px 12px;
+  gap: 12px;
+  width: 420px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  background-color: rgba(249, 244, 244, 0.771);
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldLabel {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.field {
+  width: 100%;
+  height: 40px;
+  border: 2px solid black;
+  outline: none;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 10px;
+  /* margin-bottom: 10px; */
+  font-size: 16px;
+  color: black;
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.formBtn {
+  border: none;
+  border-radius: 8px;
+  background-color: grey;
+  color: black;
+  height: 40px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 18px;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.formBtn:hover {
+  background-color: rgb(154, 70, 70);
+}

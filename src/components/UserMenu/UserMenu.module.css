@@ -1,0 +1,23 @@
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoutBtn {
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(154, 70, 70);
+  color: black;
+  height: 40px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 18px;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoutBtn:hover {
+  background-color: grey;
+}

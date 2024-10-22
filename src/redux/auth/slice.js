@@ -1,45 +1,40 @@
-// redux/auth/slice.js
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import { login, logout, refreshUser, register } from "./operations";
 
 const initialState = {
-  user: { name: null, email: null },
-  token: null,
+  user: {
+    name: "",
+    email: "",
+  },
+  token: "",
   isLoggedIn: false,
   isRefreshing: false,
 };
 
-const authSlice = createSlice({
+const slice = createSlice({
   name: "auth",
   initialState,
   extraReducers: (builder) => {
     builder
-      // Реєстрація користувача
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      // Логін користувача
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      // Логаут користувача
-      .addCase(logout.fulfilled, (state) => {
-        state.user = { name: null, email: null };
-        state.token = null;
-        state.isLoggedIn = false;
-      })
-      // Оновлення користувача за токеном
-      .addCase(refreshUser.pending, (state) => {
-        state.isRefreshing = true;
-      })
+      .addCase(logout.fulfilled, () => initialState)
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+      })
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshing = true;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
@@ -47,4 +42,4 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export const authSlice = slice.reducer;

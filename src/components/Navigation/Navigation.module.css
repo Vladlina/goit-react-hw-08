@@ -1,0 +1,12 @@
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  color: rgb(154, 70, 70);
+}
+
+.navLink:hover {
+  color: rgb(93, 34, 34);
+}
